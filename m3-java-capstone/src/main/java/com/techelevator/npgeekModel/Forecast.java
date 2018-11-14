@@ -10,7 +10,7 @@ public class Forecast {
 	private double		highC;
 	private String		tempMessage;
 	private String		weatherMessage;
-
+	private String		imgName;
 	
 	public double getLowC() {
 		return lowC;
@@ -41,18 +41,24 @@ public class Forecast {
 	}
 	public void setLowF(int lowF) {
 		this.lowF = lowF;
+		setTempMessage();
+		setLowC();
 	}
 	public int getHighF() {
 		return highF;
 	}
 	public void setHighF(int highF) {
 		this.highF = highF;
+		setTempMessage();
+		setHighC();
 	}
 	public String getForecast() {
 		return forecast;
 	}
 	public void setForecast(String forecast) {
 		this.forecast = forecast;
+		setImgName();
+		setWeatherMessage();
 	}
 	
 
@@ -74,6 +80,9 @@ public class Forecast {
 		if ((highF-lowF)>20) {
 			tempMessage+= "Be sure to wear breathable layers. \n";
 		}
+		else {
+			tempMessage = "";
+		}
 	}
 	
 	public void setWeatherMessage() {
@@ -92,7 +101,17 @@ public class Forecast {
 		
 	}
 	
+	public String getImgName() {
+		return imgName;
+	}
 	
-	
+	private void setImgName() {
+		if (forecast.contains("partly")) {
+			imgName = "partlyCloudy.png";
+		}
+		else {
+			imgName = forecast + ".png";
+		}
+	}
 
 }

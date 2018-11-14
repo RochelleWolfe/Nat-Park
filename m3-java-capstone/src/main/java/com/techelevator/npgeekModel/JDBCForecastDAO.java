@@ -40,8 +40,8 @@ public class JDBCForecastDAO implements ForecastDAO {
 		forecast.setLowF(row.getInt("low"));
 		forecast.setHighF(row.getInt("high"));
 		forecast.setForecast(row.getString("forecast"));
+		
 		return forecast;
 	}
-	
 	
 }
