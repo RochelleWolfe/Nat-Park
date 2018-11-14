@@ -31,11 +31,9 @@ public class JDBCParkDAO implements ParkDAO {
 		return allParks;
 	}
 
-	
-	
 	private Park mapRowToPark(SqlRowSet row) {
 		Park park = new Park();
-		//park.setParkCode(row.)  auto generate the code
+		park.setParkCode(row.getString("parkcode"));
 		park.setParkName(row.getString("parkname"));
 		park.setState(row.getString("state"));
 		park.setAcreage(row.getInt("acreage"));	
