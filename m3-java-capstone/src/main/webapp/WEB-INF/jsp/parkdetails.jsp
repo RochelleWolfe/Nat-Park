@@ -34,19 +34,24 @@
 		
 		<p class="detail-description">${park.parkDescription}</p>
 		
-		<form name="tempUnit" method="get" action="parkdetails">
-		<input type="radio" name="tempUnit" value="Fahrenheit" onclick="this.form.submit();">Fahrenheit<br>
-		<input type="radio" name="tempUnit" value="Celcius" onclick="this.form.submit();">Celcius
+		
+<%--WISHLIST when modelmap is C/F, C/F is checked--%>		
+		<form name="tempUnit" method=POST action="parkdetails">
+		<input type="radio" name="tempUnit" value="F" onclick="this.form.submit();">Fahrenheit<br>
+		<input type="radio" name="tempUnit" value="C" onclick="this.form.submit();">Celcius
+		<input type="hidden" name="parkcode" value="${park.parkCode}" />
 		</form>
 		
+<%--WISHLIST display Celsius to only 1 decimal point --%>	
+<%--WISHLIST display F or C after temp value --%>	
 		<div class="details-weather">
 			<div class="weather-today">
 				<h2>Today</h2>
 				<c:set var="dayOne" value="${forecastList.get(0)}" />
 				<c:url var="weatherImg" value="/img/weather/${dayOne.imgName}" />
 				<img src="${weatherImg}" />
-				<p class="weather-high">High: ${dayOne.highF}
-				<span class="weather-low">Low: ${dayOne.lowF}</span></p> 
+				<p class="weather-high">High: ${dayOne.high}${tempModel.get("tempUnit")}
+				<span class="weather-low">Low: ${dayOne.low}${tempModel}</span></p>
 				<p class="messages">${dayOne.tempMessage}${dayOne.weatherMessage}</p>
 			</div>
 			<div class="weather-future">
@@ -59,19 +64,19 @@
 						</td>
 					</c:forEach>
 				</tr>
-				<%-- ${forecast.high/low(variable for F or C we pass into the ${}) --%>
+				
+				
 				<tr>
 					<c:forEach begin="1" end="4" var="forecast" items="${forecastList}">
 						<td>
-							<p class="highAF">High: ${forecast.highF}</p>
+							<p class="high">High: ${forecast.high}${tempUnit}</p>
 						</td>
 					</c:forEach>
 				</tr>
 				<tr>
 					<c:forEach begin="1" end="4" var="forecast" items="${forecastList}">
 						<td>
-							<c:url var="forecastLow" value="/img/weather/${forecast.lowF}" />
-							<p class="lowAF">Low: ${forecast.lowF}</p>
+							<p class="low">Low: ${forecast.low}${tempUnit}</p>
 						</td>
 					</c:forEach>
 				</tr>
@@ -80,4 +85,5 @@
 		</div>
 	</div>
 </section>
+<%--WISHLIST add img to footer --%>
 <c:import url="/WEB-INF/jsp/common/footer.jsp"/>

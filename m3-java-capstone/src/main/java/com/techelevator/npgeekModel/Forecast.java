@@ -1,29 +1,17 @@
 package com.techelevator.npgeekModel;
 
+
+
 public class Forecast {
 	private String		parkCode;
 	private int			day; //days 1-5
-	private int			lowF;
-	private int			highF;
+	private Double			low;
+	private Double			high;
 	private String		forecast;
-	private double		lowC;
-	private double		highC;
-	private String		tempMessage;
+	private String		tempMessage = "";
 	private String		weatherMessage;
 	private String		imgName;
 	
-	public double getLowC() {
-		return lowC;
-	}
-	public void setLowC() {
-		lowC= (lowF-32)/1.8;
-	}
-	public double getHighC() {
-		return highC;
-	}
-	public void setHighC() {
-		highC= (highF-32)/1.8;
-	}
 	public String getParkCode() {
 		return parkCode;
 	}
@@ -36,21 +24,18 @@ public class Forecast {
 	public void setDay(int day) {
 		this.day = day;
 	}
-	public int getLowF() {
-		return lowF;
+	
+	public Double getLow() {
+		return low;
 	}
-	public void setLowF(int lowF) {
-		this.lowF = lowF;
-		setTempMessage();
-		setLowC();
+	public void setLow(Double low) {
+		this.low = low;
 	}
-	public int getHighF() {
-		return highF;
+	public Double getHigh() {
+		return high;
 	}
-	public void setHighF(int highF) {
-		this.highF = highF;
-		setTempMessage();
-		setHighC();
+	public void setHigh(Double high) {
+		this.high = high; 
 	}
 	public String getForecast() {
 		return forecast;
@@ -70,19 +55,8 @@ public class Forecast {
 		return tempMessage;
 	}
 	
-	public void setTempMessage() {
-		if (highF>75) {
-			tempMessage+= "Be sure to pack an extra gallon of water. \n";
-		}
-		if (lowF<20) {
-			tempMessage+= "Warning: prepare for cold temperatures! \n";
-		}
-		if ((highF-lowF)>20) {
-			tempMessage+= "Be sure to wear breathable layers. \n";
-		}
-		else {
-			tempMessage = "";
-		}
+	public void setTempMessage(String tempMessage) {
+		this.tempMessage+= tempMessage;
 	}
 	
 	public void setWeatherMessage() {
@@ -97,7 +71,10 @@ public class Forecast {
 		}
 		if (forecast.contains("sunny")) {
 			weatherMessage = "Don't forget your sunblock!";
+			
+		} else {weatherMessage = "";
 		}
+		
 		
 	}
 	
