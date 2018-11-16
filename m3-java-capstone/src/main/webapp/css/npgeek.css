@@ -97,6 +97,14 @@ table {
 	font-family: "Verdana", sans-serif;
 }
 
+.survey {
+	padding-top: 25px;
+	padding-bottom: 25px;
+	background-color: rgba(255,255,255,0.85);
+	margin-left: 15%;
+   	margin-right: 15%;
+}
+
 #radio {
 	margin-left: auto;
 	margin-right: auto;
