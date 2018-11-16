@@ -43,7 +43,7 @@ public class Forecast {
 	public void setForecast(String forecast) {
 		this.forecast = forecast;
 		setImgName();
-		setWeatherMessage(forecast);
+	
 	}
 	
 

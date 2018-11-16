@@ -1,0 +1,120 @@
+header {
+	background-image: url("robinegg.jpg");
+	background-size: cover;
+	background-position: center center;
+	border: 10px;
+	   padding-left: 25%;
+   padding-right: 25%;
+}
+
+header h1 {
+	font-size: 23pt;
+	color: #543405;
+	padding-left: 25px;
+	padding-bottom: 10px;
+	margin: 0px;
+	font-family: "Verdana", sans-serif;
+}
+header img {
+	height:200px;
+}
+
+nav {
+	padding-top: 25px;
+	padding-bottom: 25px;
+	background-color: rgba(255,255,255,0.85);
+	margin-left: 15%;
+   	margin-right: 15%;
+}	
+
+a:hover {
+   text-decoration: underline;
+}
+a {
+   color: var(--black);
+   text-decoration: none;
+}
+
+nav ul {
+	list-style: none;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: space-between;
+
+}
+
+nav ul li {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
+nav ul a{
+	font-size: 16pt;
+	font-family: "Verdana", sans-serif;
+	padding-right: 5%;
+	padding-left: 5%;
+	text-align: center;
+}
+
+.main-content {
+	  margin-left: 15%;
+   margin-right: 15%;
+	text-align: center;
+	background-color: rgba(255,255,255,0.85);
+}
+
+.main-content h2, p {
+    font-family: "Verdana", sans-serif;
+}
+
+.park {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-areas: "img text";
+	border-bottom: solid black 4px;
+}
+.park-img {
+	grid-area: img;
+	width: 80%;
+	display: flex;
+   flex-direction: row;
+   justify-self: center;
+   border: solid black 2px;
+   border-radius: 10px;
+}
+
+.park-details {
+	grid-area: text;
+}
+
+table {
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 12pt;
+	font-family: "Verdana", sans-serif;
+}
+
+#radio {
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 12pt;
+	font-family: "Verdana", sans-serif;
+	border: solid black 3px;
+	border-radius: 50px;
+	background-color: #adb8d9;
+	background-opacity: 20%;
+}
+
+.future-img {
+	width: 75%;
+}
+
+body {
+	background-image: url("bark.jpg");
+	background-size: cover;
+}
+
+

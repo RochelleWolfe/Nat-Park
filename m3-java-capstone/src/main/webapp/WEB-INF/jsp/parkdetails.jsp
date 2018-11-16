@@ -36,7 +36,7 @@
 		<p class="detail-description">${park.parkDescription}</p>
 		
 <%--WISHLIST when modelmap is C/F, C/F is checked--%>		
-		<form name="tempUnit" method=POST action="parkdetails">
+		<form name="tempUnit" method=POST action="parkdetails" id="radio">
 		<input type="radio" name="tempUnit" value="F" onclick="this.form.submit();">Fahrenheit<br>
 		<input type="radio" name="tempUnit" value="C" onclick="this.form.submit();">Celcius
 		<input type="hidden" name="parkcode" value="${park.parkCode}" />

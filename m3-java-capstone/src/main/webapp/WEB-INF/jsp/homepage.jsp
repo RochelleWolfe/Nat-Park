@@ -3,6 +3,8 @@
 <c:import url="/WEB-INF/jsp/common/header.jsp"/>
 
 <section class="main-content">
+ <h2>Explore our Parks</h2> 
+        <p> Click on a park's image to discover great details! </p> 
 	<div class="all-parks">
 	<c:forEach var="parks" items="${parkList}">
 		<div class="park">
@@ -15,7 +17,7 @@
 			<img class="park-img" src="${parkUrl}" /></a>
 			
 			<div class="park-details">
-				<p id="park-name">${parks.parkName}, ${parks.state}</p>
+				<p id="park-name"><strong>${parks.parkName}, ${parks.state}</strong></p>
 				<p id="park-description">${parks.parkDescription}</p>
 			</div>
 		</div>

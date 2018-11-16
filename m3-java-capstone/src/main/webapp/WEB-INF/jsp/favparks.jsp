@@ -10,10 +10,12 @@
 				<c:url var="parkDetailUrl" value="/parkdetails">
 				<c:param name="parkcode" value="${favparks.parkcode}" />
 				</c:url>
-				
 				<a href="${parkDetailUrl}"><img class="park-img" src="${favParkUrl}" /></a>
-				<p>${favparks.parkname}</p>
-				<p>${favparks.numSurveys} votes</p>
+				<div class="park-details">
+				<p>${favparks.parkname}</p><br>
+				<p>${favparks.numSurveys} votes</p><br>
+				
+				</div>
 			</div>
 		</c:forEach>
 	</div>

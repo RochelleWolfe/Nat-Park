@@ -17,12 +17,10 @@
         		<img src="${logoSrc}" alt="NPGeek logo" />
         </a>
 
-        <h1>Nation Park Geek</h1>
-        <p>Rochelle & Evan's Module 3 Capstone</p> <%--change later --%>
+        <h1>Rochelle & Evan's Module 3 Capstone</h1>
+ 
     </header>
     <nav>
-        <h2>Explore our parks</h2> <%--change later --%>
-        <p> Use these state of the art web applications to learn more about our parks! </p> <%--change later --%>
         <ul>
             <li><a href="${homePageHref}">Home</a></li>
             <c:url value="/survey" var="surveyUrl" />
