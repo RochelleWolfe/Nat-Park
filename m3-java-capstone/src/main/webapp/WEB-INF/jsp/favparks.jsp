@@ -21,3 +21,6 @@
 	</div>
 </section>
 <c:import url="/WEB-INF/jsp/common/footer.jsp"/>
+
+<%-- WISHLIST make a bar graph for results 
+	https://meyerweb.com/eric/css/edge/bargraph/demo-table.html --%>
