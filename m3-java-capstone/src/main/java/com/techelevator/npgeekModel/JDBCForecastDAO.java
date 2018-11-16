@@ -35,12 +35,11 @@ public class JDBCForecastDAO implements ForecastDAO {
 		Forecast forecast = new Forecast();
 		forecast.setParkCode(row.getString("parkcode"));
 		forecast.setDay(row.getInt("fivedayforecastvalue"));
-
+		
 		tempMessage(row, forecast);
 		convertTemp(row, forecast, tempModel);
-		
+		weatherMessage(row, forecast);
 		forecast.setForecast(row.getString("forecast"));
-		
 		
 		return forecast;
 	}
@@ -57,6 +56,24 @@ public class JDBCForecastDAO implements ForecastDAO {
 		}
 		else {
 			forecast.setTempMessage("");
+		}
+	}
+	
+	private void weatherMessage(SqlRowSet row, Forecast forecast) {
+		String s = row.getString("forecast");
+		if (s.contains("snow")) {
+			forecast.setWeatherMessage("Don't forget the snowshoes! ");
+		}
+		if (s.contains("rain")) {
+			forecast.setWeatherMessage("Don't forget your raingear and waterproof shoes! ");
+		}
+		if (s.contains("thunderstorms")) {
+			forecast.setWeatherMessage("In the event of thunderstorm, seek shelter and avoid hiking on exposed ridges. ");
+		}
+		if (s.contains("sunny")) {
+			forecast.setWeatherMessage("Don't forget your sunblock!");
+			
+		} else {forecast.setWeatherMessage("");
 		}
 	}
 	

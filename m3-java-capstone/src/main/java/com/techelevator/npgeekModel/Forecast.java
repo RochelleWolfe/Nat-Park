@@ -9,7 +9,7 @@ public class Forecast {
 	private Double			high;
 	private String		forecast;
 	private String		tempMessage = "";
-	private String		weatherMessage;
+	private String		weatherMessage = "";
 	private String		imgName;
 	
 	public String getParkCode() {
@@ -43,7 +43,7 @@ public class Forecast {
 	public void setForecast(String forecast) {
 		this.forecast = forecast;
 		setImgName();
-		setWeatherMessage();
+		setWeatherMessage(forecast);
 	}
 	
 
@@ -59,23 +59,8 @@ public class Forecast {
 		this.tempMessage+= tempMessage;
 	}
 	
-	public void setWeatherMessage() {
-		if (forecast.contains("snow")) {
-			weatherMessage = "Don't forget the snowshoes! \n";
-		}
-		if (forecast.contains("rain")) {
-			weatherMessage = "Don't forget your raingear and waterproof shoes! \n";
-		}
-		if (forecast.contains("thunderstorms")) {
-			weatherMessage = "In the event of thunderstorm, seek shelter and avoid hiking on exposed ridges. \n";
-		}
-		if (forecast.contains("sunny")) {
-			weatherMessage = "Don't forget your sunblock!";
-			
-		} else {weatherMessage = "";
-		}
-		
-		
+	public void setWeatherMessage(String weatherMessage) {
+		this.weatherMessage+= weatherMessage;
 	}
 	
 	public String getImgName() {

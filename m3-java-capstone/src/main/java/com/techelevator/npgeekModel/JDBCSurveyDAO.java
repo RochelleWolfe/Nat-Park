@@ -25,19 +25,16 @@ public class JDBCSurveyDAO implements SurveyDAO {
 	@Override
 	public List<FavPark> listOfFavoriteParks() {
 		List<FavPark> listOfFavoriteParks= new ArrayList<>();
-		FavPark fp = new FavPark();
-		String sqlGetFavorites = "SELECT parkname, COUNT(surveyid) AS surveys " + 
+		
+		String sqlGetFavorites = "SELECT parkname, park.parkcode, COUNT(surveyid) AS surveys " + 
 				"FROM park " + 
-				"INNER JOIN " + 
-				"survey_result " + 
+				"INNER JOIN survey_result " + 
 				"ON park.parkcode = survey_result.parkcode " + 
-				"GROUP BY parkname " + 
-				"ORDER BY surveys DESC;";
+				"GROUP BY parkname, park.parkcode " + 
+				"ORDER BY surveys DESC, parkname ASC;";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetFavorites);
 		while(results.next()) {
-			fp.setParkname(results.getString("parkname"));
-			fp.setNumSurveys(results.getInt("surveys"));
-			listOfFavoriteParks.add(fp);
+			listOfFavoriteParks.add(mapRowToFavParks(results));
 		}
 		return listOfFavoriteParks;
 	}
@@ -63,6 +60,7 @@ public class JDBCSurveyDAO implements SurveyDAO {
 		return survey;
 	}
 	
+	@Override
 	public void save(Survey survey) {
 		int id = getNextId();
 		String sqlInsertSurvey = "INSERT INTO survey_result (surveyid, parkcode, emailaddress, state, activitylevel) " + 
@@ -83,5 +81,11 @@ public class JDBCSurveyDAO implements SurveyDAO {
 		return id;
 	}
 	
-	
+	private FavPark mapRowToFavParks(SqlRowSet row) {
+		FavPark fp = new FavPark();
+		fp.setParkname(row.getString("parkname"));
+		fp.setNumSurveys(row.getInt("surveys"));
+		fp.setParkcode(row.getString("parkcode"));
+		return fp;
+	}
 }

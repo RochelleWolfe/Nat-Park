@@ -1,11 +1,36 @@
 package com.techelevator.npgeekModel;
 
+import javax.validation.constraints.AssertTrue;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+
 public class Survey {
+	
 	private int		id; 
 	private String	parkCode;
+	
+	@NotBlank(message="Your Email is required.")
+	@Email(message="A valid Email is required")
 	private String	email;
-	private String	state;
-	private	String	activityLevel; //this will be a dropdown menu
+	
+	@NotBlank(message="Your Email is required.")
+	@Email(message="A valid Email is required")
+	private String	confirmEmail;
+	
+	@NotBlank(message="Your state of residence is required.")
+	private String	state;  //Wishlist: drop down with all 50 states
+	
+	private	String	activityLevel;
+	
+	@SuppressWarnings("unused")
+	@AssertTrue(message="Emails must match")
+	public boolean isEmailMatching() {
+		if (email != null) {
+			return email.equals(confirmEmail);
+		}
+		return false;
+	}
 	
 	public int getId() {
 		return id;
@@ -37,10 +62,11 @@ public class Survey {
 	public void setActivityLevel(String activityLevel) {
 		this.activityLevel = activityLevel;
 	}
-	
-	
-	
-	
-	
+	public String getConfirmEmail() {
+		return confirmEmail;
+	}
+	public void setConfirmEmail(String confirmEmail) {
+		this.confirmEmail = confirmEmail;
+	}
 
 }

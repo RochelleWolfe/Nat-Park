@@ -6,6 +6,5 @@ import java.util.Map;
 public interface SurveyDAO {
 	public List<FavPark> listOfFavoriteParks();
 	
-	public void save(Survey survey) ;
-
+	public void save(Survey survey);
 }

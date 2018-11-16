@@ -36,20 +36,13 @@ public class ParkDetailsController {
 	
 	@RequestMapping(path = "/parkdetails", method = RequestMethod.GET)
 	public String displayParkDetails(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		//Plan A
 		try {
 			String parkCodeParam = request.getParameter("parkcode");
 			request.setAttribute("park", getParkByCode(parkCodeParam));
 			List<Forecast> forecasts = forecastDao.getFiveDayForecast(parkCodeParam, tempModel);
 			request.setAttribute("forecastList", forecasts);
-
-			
-			
 			return "parkdetails";
-			}
-
-			
-		catch (NumberFormatException | IndexOutOfBoundsException e) {
+			}	catch (NumberFormatException | IndexOutOfBoundsException e) {
 			response.sendError(HttpServletResponse.SC_BAD_REQUEST);
 			return null;
 		}

@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
 <c:import url="/WEB-INF/jsp/common/header.jsp"/>
 
@@ -34,7 +35,6 @@
 		
 		<p class="detail-description">${park.parkDescription}</p>
 		
-		
 <%--WISHLIST when modelmap is C/F, C/F is checked--%>		
 		<form name="tempUnit" method=POST action="parkdetails">
 		<input type="radio" name="tempUnit" value="F" onclick="this.form.submit();">Fahrenheit<br>
@@ -42,7 +42,6 @@
 		<input type="hidden" name="parkcode" value="${park.parkCode}" />
 		</form>
 		
-<%--WISHLIST display Celsius to only 1 decimal point --%>	
 <%--WISHLIST display F or C after temp value --%>	
 		<div class="details-weather">
 			<div class="weather-today">
@@ -50,8 +49,10 @@
 				<c:set var="dayOne" value="${forecastList.get(0)}" />
 				<c:url var="weatherImg" value="/img/weather/${dayOne.imgName}" />
 				<img src="${weatherImg}" />
-				<p class="weather-high">High: ${dayOne.high}${tempModel.get("tempUnit")}
-				<span class="weather-low">Low: ${dayOne.low}${tempModel}</span></p>
+				<fmt:formatNumber var="tempHigh" value="${dayOne.high}" maxFractionDigits="1"/>
+				<fmt:formatNumber var="tempLow" value="${dayOne.low}" maxFractionDigits="1"/>
+				<p class="weather-high">High: ${tempHigh}${tempUnit}
+				<span class="weather-low">Low: ${tempLow}${tempModel}</span></p>
 				<p class="messages">${dayOne.tempMessage}${dayOne.weatherMessage}</p>
 			</div>
 			<div class="weather-future">
@@ -69,14 +70,16 @@
 				<tr>
 					<c:forEach begin="1" end="4" var="forecast" items="${forecastList}">
 						<td>
-							<p class="high">High: ${forecast.high}${tempUnit}</p>
+							<fmt:formatNumber var="tempHigh2" value="${forecast.high}" maxFractionDigits="1"/>
+							<p class="high">High: ${tempHigh2}${tempUnit}</p>
 						</td>
 					</c:forEach>
 				</tr>
 				<tr>
 					<c:forEach begin="1" end="4" var="forecast" items="${forecastList}">
 						<td>
-							<p class="low">Low: ${forecast.low}${tempUnit}</p>
+							<fmt:formatNumber var="tempLow2" value="${forecast.low}" maxFractionDigits="1"/>
+							<p class="low">Low: ${tempLow2}${tempUnit}</p>
 						</td>
 					</c:forEach>
 				</tr>
