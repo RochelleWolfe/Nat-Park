@@ -24,7 +24,7 @@
         <ul>
             <li><a href="${homePageHref}">Home</a></li>
             <c:url value="/survey" var="surveyUrl" />
-            <li><a href="${surveyUrl}">Vote for Your Favorite Park</a></li> <%--href = controller --%>
+            <li class="liSurvey"><a href="${surveyUrl}">Vote for Your Favorite Park</a></li> <%--href = controller --%>
             <c:url value="/favparks" var="favParkUrl" />
             <li><a href="${favParkUrl}">Favorite Parks</a></li> <%--href = controller --%>
         </ul>
